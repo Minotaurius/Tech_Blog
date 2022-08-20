@@ -8,4 +8,4 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 require('dotenv').config();
 
-const app = express()
+const app = express();
