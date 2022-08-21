@@ -33,11 +33,22 @@ view_router.get('/register', isLoggedIn, (req, res) => {
 });
 
 view_router.get('/dashboard', isLoggedIn, (req, res) => {
-    if(req.session.user_id) {
-        console.log('This is working')
-        return Post.findAll()
-        .then(posts => {
-            res.render('dashboard', {post: {...posts}})
+    const user_id = req.session.userId
+    if(user_id) {
+        // console.log('This is working')
+        return User.findOne({
+            where: {
+                id: user_id
+            },
+            attributes: 
+            ["id","email","username"],
+        })
+        .then(user => {
+            user = {
+                username: user.username,
+                email: user.email
+            }
+            res.render('dashboard', { user })
         });
     }
     res.render('dashboard')
