@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { engine } = require('express-handlebars');
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT || 9000;
 const db = require('./config/connection');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -29,10 +29,6 @@ app.use(session({
 
 app.use('/', view_routes);
 app.use('/auth', auth_routes);
-
-app.get('/', (req, res) => {
-    res.render ("index")
-})
 
 db.sync().then(() => {
     app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
