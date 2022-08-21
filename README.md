@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a full stack application that allows users to discuss technology. In it's final form it will allow users to see all posts from all users as well as have a dashboard to allow user to just see their own posts. We are hoping to add comments to posts at a future date as well.
+This is a full stack application that allows users to discuss technology. In it's final form it will allow users to see all posts from all users as well as have a dashboard to allow user to just see their own posts. The application is still under construction. Posts are not displaying correctly currently. We are hoping to add comments to posts at a future date as well.
 
 ## Table of Contents
 
