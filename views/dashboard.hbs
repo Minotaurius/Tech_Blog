@@ -1,0 +1,18 @@
+<div class="posts">
+{{#each posts}}
+<div class="card">
+    <span class="card-title">
+        <h2>
+            {{title}}
+        </h2>
+        <div>
+            Post made by {{User.username}}
+        </div>
+    </span>
+    <div class="card-text">
+        {{body}}
+    </div>
+
+</div>
+{{/each}}
+</div>

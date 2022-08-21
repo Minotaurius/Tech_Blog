@@ -27,9 +27,9 @@ app.use(session({
     }
 }));
 
-app.use('/', view_routes);
-app.use('/auth', auth_routes);
-app.use('/dashboard', dash_routes);
+// app.use('/', view_routes);
+// app.use('/auth', auth_routes);
+app.use(require('./controllers'));
 
 db.sync().then(() => {
     app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
