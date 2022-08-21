@@ -32,15 +32,15 @@ view_router.get('/register', isLoggedIn, (req, res) => {
     res.render('register', { errors: req.session.errors })
 });
 
-// view_router.get('/dashboard', isLoggedIn, (req, res) => {
-//     if(req.session.user_id) {
-//         console.log('This is working')
-//         return Post.findAll()
-//         .then(posts => {
-//             res.render('dashboard', {post: {...posts}})
-//         });
-//     }
-//     res.render('dashboard')
-// });
+view_router.get('/dashboard', isLoggedIn, (req, res) => {
+    if(req.session.user_id) {
+        console.log('This is working')
+        return Post.findAll()
+        .then(posts => {
+            res.render('dashboard', {post: {...posts}})
+        });
+    }
+    res.render('dashboard')
+});
 
 module.exports = view_router
