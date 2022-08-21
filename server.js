@@ -5,7 +5,9 @@ const PORT = process.env.PORT || 3333;
 const db = require('./config/connection');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 require('dotenv').config();
+
 const { view_routes, auth_routes } = require('./controllers');
 const app = express();
 
@@ -21,12 +23,16 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     cookie: {
-        // httpOnly: true
+
     }
 }));
 
 app.use('/', view_routes);
 app.use('/auth', auth_routes);
+
+app.get('/', (req, res) => {
+    res.render ("index")
+})
 
 db.sync().then(() => {
     app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
