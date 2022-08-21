@@ -8,7 +8,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 require('dotenv').config();
 
-const { view_routes, auth_routes } = require('./controllers');
+const { view_routes, auth_routes, dash_routes } = require('./controllers');
 const app = express();
 
 app.use(express.static(path.join('front')));
@@ -29,6 +29,7 @@ app.use(session({
 
 app.use('/', view_routes);
 app.use('/auth', auth_routes);
+app.use('/dashboard', dash_routes);
 
 db.sync().then(() => {
     app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
