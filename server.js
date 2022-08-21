@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const { engine } = require('express-handlebars');
-const PORT = process.env.PORT || 9000;
 const db = require('./config/connection');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -9,6 +8,8 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 require('dotenv').config();
 
 const { view_routes, auth_routes, dash_routes } = require('./controllers');
+
+const PORT = process.env.PORT || 9000;
 const app = express();
 
 app.use(express.static(path.join('front')));
@@ -27,9 +28,12 @@ app.use(session({
     }
 }));
 
-// app.use('/', view_routes);
-// app.use('/auth', auth_routes);
-app.use(require('./controllers'));
+app.use('/', view_routes);
+app.use('/auth', auth_routes);
+app.use('/dashboard', dash_routes);
+// app.use('/comment', comm_routes);
+// app.use('/post', post_routes);
+// app.use(require('./controllers'));
 
 db.sync().then(() => {
     app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));

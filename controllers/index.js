@@ -2,6 +2,4 @@ module.exports = {
     view_routes: require('./view_routes'),
     auth_routes: require('./auth_routes'),
     dash_routes: require('./dash_routes'),
-    comm_routes: require('./comm_routes'),
-    
 }
